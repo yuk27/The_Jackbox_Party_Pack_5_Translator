@@ -38,7 +38,6 @@ default_config = {
                 'PatentlyStupidGeneDrawing': {
                     "translate": True,
                     "has_folder": True,
-                    "single_structure": True,
                     "strings": ['Title'],
                     "dicts": [],
                     "dict_arrays": [],
@@ -51,12 +50,12 @@ default_config = {
                     "translate": True,
                     "has_folder": True,
                     "strings": ['decoys', 'prompt'],
-                    "dicts": ['prompt'],
-                    "dict_arrays": ['decoys', 'twists', 'facts'],
-                    "special_characters": [['<', '>']],
+                    "dicts": [],
+                    "dict_arrays": [],
+                    "special_characters": None,
                     "v": [2, 3, 4],
                     "s": [],
-                    "episodeid": 1353
+                    "episodeid": 1368
                 }
             }
         },
