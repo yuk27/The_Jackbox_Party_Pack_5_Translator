@@ -53,8 +53,8 @@ default_config = {
                     "dicts": [],
                     "dict_arrays": [],
                     "special_characters": None,
-                    "v": [2, 3, 4],
-                    "s": [],
+                    "v": [2, 3],
+                    "s": [4],
                     "episodeid": 1368
                 }
             }
