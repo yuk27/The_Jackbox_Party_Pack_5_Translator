@@ -2,7 +2,7 @@ from Utilities import Utils
 from GamesManagement import GamesManager
 
 default_config = {
-    "input_path": "C:\\Users\\Jsolano\\Downloads\\The Jackbox Party Pack 5\\",
+    "input_path": "C:\\Users\\Jsolano\\Downloads\\The Jackbox Party Pack 5",
     "output_path": "",
     "games_path": "games\\",
     "language": "es",
@@ -62,7 +62,7 @@ default_config = {
         },
         "SplitTheRoom": {
             "path": "games\\SplitTheRoom",
-            "translate": False,
+            "translate": True,
 
             "filenames": {
                 'SplitTheRoomFinal': {
@@ -102,7 +102,7 @@ default_config = {
         },
         "SlingShoot": {
             "path": "games\\SlingShoot",
-            "translate": False,
+            "translate": True,
 
             "filenames": {
                 'SSDifficulty': {
