@@ -2,7 +2,7 @@ from Utilities import Utils
 from GamesManagement import GamesManager
 
 default_config = {
-    "input_path": "C:\\Users\\Jsolano\\Downloads\\The Jackbox Party Pack 5",
+    "input_path": "C:\\Users\\Juan Carlos Solano\\Documents\\Mine\\The Jackbox Party Pack 5",
     "output_path": "",
     "games_path": "games\\",
     "language": "es",
@@ -53,8 +53,8 @@ default_config = {
                     "dicts": [],
                     "dict_arrays": [],
                     "special_characters": None,
-                    "v": [2, 3],
-                    "s": [4],
+                    "v": [1, 2],
+                    "s": [3],
                     "episodeid": 1368
                 }
             }
