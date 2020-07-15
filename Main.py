@@ -27,12 +27,12 @@ default_config = {
     "games": {
         "PartyPack": {
             "path": "games\\PartyPack",
-            "translate": True,
+            "translate": False,
             "filenames": {}
         },
         "PatentlyStupid": {
             "path": "games\\PatentlyStupid",
-            "translate": True,
+            "translate": False,
 
             "filenames": {
                 'PatentlyStupidGeneDrawing': {
@@ -71,8 +71,8 @@ default_config = {
                     "dicts": [],
                     "dict_arrays": [],
                     "special_characters": [['<', '>'], ['[', ']']],
-                    "v": [3, 5, 6, 7, 8, 9, 10, 12, 16],
-                    "s": [17, 18, 19],
+                    "v": [3, 5, 6, 7, 8, 9, 10, 12, 15],
+                    "s": [16, 17, 18],
                     "episodeid": 1353
                 },
                 'SplitTheRoomLater': {
@@ -145,7 +145,7 @@ default_config = {
 
 utils = Utils()
 config = utils.create_config(default_config)
-utils.refresh_output(config['input_path'], config['output_path'])
+# utils.refresh_output(config['input_path'], config['output_path'])
 
 for game in config['games'].keys():
     if config['games'][game]['translate']:
