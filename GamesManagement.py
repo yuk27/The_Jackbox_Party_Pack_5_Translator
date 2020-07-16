@@ -7,21 +7,27 @@ class GamesManager:
     utils = None
     config = None
 
-    def translate_single_structure(self, file, special_characters=None):
-        file_name = file[:-4]
-        data = self.utils.read_json("{0}\\{1}".format(self.input_path, file))
+    def translate_single_structure(self, folder, special_characters=None):
+        folder_input_path = '{0}{1}'.format(self.input_path, folder)
+        folder_output_path = '{0}{1}'.format(self.output_path, folder)
 
-        if self.config['games'][self.game]['filenames'][file_name]['episodeid'] > 0:
-            data['episodeid'] = self.config['games'][self.game]['filenames']['{0}'.format(file[:-4])]['episodeid']
+        for internal_path in os.listdir(folder_input_path):
+            for file in os.listdir('{0}\\{1}'.format(folder_input_path, internal_path)):
+                if file[4:] == '.jet':
+                    data = self.utils.read_json('{0}\\{1}\\{2}'.format(folder_input_path, internal_path, file))
+                    amount_of_lines = len(data['fields'])
+                    index = 0
+                    for line in data['fields']:
+                        index += 1
+                        print(self.config['games'][self.game]['filenames'][folder])
+                        if 'v' in line.keys() and line['v'] not in self.config['games'][self.game]['filenames'][folder]['skip_values'] and line['v'][:2] != 'S+' and not (line['v'][:5].isnumeric()):
+                            line['v'] = self.utils.translate(line['v'], special_characters=special_characters)
 
-        amount_of_lines = len(data['content'])
-        index = 0
-        for line in data['content']:
-            index += 1
-            for string in self.config['games'][self.game]['filenames'][file_name]['strings']:
-                line[string] = self.utils.translate(line[string], special_characters=special_characters)
-            print("{0} - {1}% - {2}".format(file_name, int((index / amount_of_lines) * 100), line))
-        self.utils.write_json(data, self.output_path, file)
+                        if 's' in line.keys() and line['s'] not in self.config['games'][self.game]['filenames'][folder]['skip_values'] and line['s'][:2] != 'S+' and not (line['s'][:5].isnumeric()):
+                            line['s'] = self.utils.translate(line['s'], special_characters=special_characters)
+
+                        print("{0} - {1}% - {2}".format(file, int((index / amount_of_lines) * 100), line))
+                    self.utils.write_json(data, '{0}\\{1}'.format(folder_output_path, internal_path), file)
 
     def translate_folder(self, folder, special_characters=None):
         folder_input_path = '{0}{1}'.format(self.input_path, folder)
@@ -86,16 +92,16 @@ class GamesManager:
 
         if not os.path.exists(self.output_path):
             os.makedirs(self.output_path)
-        self.utils.translate_menus(config, game)
+        # self.utils.translate_menus(config, game)
         for file in config['games'][game]['filenames']:
             if os.path.isfile('{0}{1}{2}'.format(self.input_path, file, '.jet')) and config['games'][game]['filenames'][file]['translate']:
                 if 'special_characters' in config['games'][game]['filenames'][file]:
                     special_characters = config['games'][game]['filenames'][file]['special_characters']
-                if 'single_structure' in config['games'][game]['filenames'][file].keys() and config['games'][game]['filenames'][file]['single_structure']:
-                    self.translate_single_structure('{0}{1}'.format(file, '.jet'), special_characters=special_characters)
-                else:
-                    self.translate_file('{0}{1}'.format(file, '.jet'), config['games'][game]['filenames'][file], special_characters=special_characters)
-                    if config['games'][game]['filenames'][file]['has_folder']:
+                # self.translate_file('{0}{1}'.format(file, '.jet'), config['games'][game]['filenames'][file], special_characters=special_characters)
+                if config['games'][game]['filenames'][file]['has_folder']:
+                    if 'single_structure' in config['games'][game]['filenames'][file].keys() and config['games'][game]['filenames'][file]['single_structure']:
+                        self.translate_single_structure(file, special_characters=special_characters)
+                    else:
                         self.translate_folder(file, special_characters)
 
 

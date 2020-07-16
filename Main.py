@@ -23,7 +23,7 @@ default_config = {
         "BADGE_TITLE_FAMILY_MODE": "APTO PARA TODA LA FAMILIA",
         "QUIT": "SALIR"
     },
-    "localization_skip_words": ['twitter', 'spice girls', 'sub-zero', 'none', 'a', 'true', 'false', 'superman'],
+    "localization_skip_words": ['twitter', 'spice girls', 'sub-zero', 'none', 'a', 'true', 'false', 'superman', 'frozen'],
     "games": {
         "PartyPack": {
             "path": "games\\PartyPack",
@@ -65,14 +65,14 @@ default_config = {
 
             "filenames": {
                 'SplitTheRoomFinal': {
+                    'single_structure': True,
+                    'skip_values': ['true', 'false'],
                     "translate": True,
                     "has_folder": True,
                     "strings": ['answerText', 'scenarioText', 'decoys', 'category', 'questionText'],
                     "dicts": [],
-                    "dict_arrays": [],
-                    "special_characters": [['<', '>'], ['[', ']']],
-                    "v": [3, 5, 6, 7, 8, 9, 10, 12, 15],
-                    "s": [16, 17, 18],
+                    "dict_arrays": [['<', '>'], ['[', ']']],
+                    "special_characters": None,
                     "episodeid": 1353
                 },
                 'SplitTheRoomLater': {
