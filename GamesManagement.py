@@ -92,12 +92,14 @@ class GamesManager:
 
         if not os.path.exists(self.output_path):
             os.makedirs(self.output_path)
-        # self.utils.translate_menus(config, game)
+        self.utils.translate_menus(config, game)
         for file in config['games'][game]['filenames']:
             if os.path.isfile('{0}{1}{2}'.format(self.input_path, file, '.jet')) and config['games'][game]['filenames'][file]['translate']:
                 if 'special_characters' in config['games'][game]['filenames'][file]:
                     special_characters = config['games'][game]['filenames'][file]['special_characters']
-                # self.translate_file('{0}{1}'.format(file, '.jet'), config['games'][game]['filenames'][file], special_characters=special_characters)
+
+                self.translate_file('{0}{1}'.format(file, '.jet'), config['games'][game]['filenames'][file], special_characters=special_characters)
+
                 if config['games'][game]['filenames'][file]['has_folder']:
                     if 'single_structure' in config['games'][game]['filenames'][file].keys() and config['games'][game]['filenames'][file]['single_structure']:
                         self.translate_single_structure(file, special_characters=special_characters)

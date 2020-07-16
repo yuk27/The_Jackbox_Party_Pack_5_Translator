@@ -77,6 +77,8 @@ default_config = {
                 },
                 'SplitTheRoomLater': {
                     "translate": True,
+                    'single_structure': True,
+                    'skip_values': ['true', 'false'],
                     "has_folder": True,
                     "strings": ['answerText', 'scenarioText', 'decoys', 'category', 'questionText'],
                     "dicts": [],
@@ -88,6 +90,8 @@ default_config = {
                 },
                 'SplitTheRoomShortie': {
                     "translate": True,
+                    'single_structure': True,
+                    'skip_values': ['true', 'false'],
                     "has_folder": True,
                     "strings": ['answerText', 'scenarioText', 'decoys', 'category', 'questionText'],
                     "dicts": [],
